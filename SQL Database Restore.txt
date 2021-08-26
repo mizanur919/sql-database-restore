@@ -1,0 +1,22 @@
+
+-- Restore Database with a new name
+USE [master]
+RESTORE DATABASE [ATLINVNEW_DEMO] 
+FROM  DISK = N'D:\PROJECT DAILY BACKUP\ATLINVNEW_17-Oct-20_111619.zip' 
+WITH  FILE = 1,MEDIAPASSWORD='atl@dbbk314',
+MOVE N'ATLINVNEW' 
+TO N'D:\MSSQL\ATLINVNEW_17-Oct-20_111619.mdf',  
+MOVE N'ATLINVNEW_log' TO N'D:\MSSQL\ATLINVNEW_17-Oct-20_111619_log.ldf',  
+NOUNLOAD,  STATS = 5
+GO
+
+-- Restore and Replace existing database
+USE [master]
+RESTORE DATABASE [FHNAF] 
+FROM  DISK = N'E:\DATA\Downloads\FHNAF.zip' 
+WITH  FILE = 1,MEDIAPASSWORD='atl@dbbk314', REPLACE,
+MOVE N'FHNAF' 
+TO N'E:\MSSQL\Data\FHNAF.mdf',  
+MOVE N'FHNAF_log' TO N'E:\MSSQL\Data\FHNAF_log.ldf',  
+NOUNLOAD,  STATS = 5
+GO
